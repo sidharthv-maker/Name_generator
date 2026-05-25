@@ -28,8 +28,8 @@ Uses the [SSA Baby Names dataset](https://www.ssa.gov/oact/babynames/limits.html
 ## Setup
 
 ```bash
-conda create -n nameenv python=3.11
-conda activate nameenv
+conda create -n tfenv python=3.11
+conda activate tfenv
 pip install torch pandas
 ```
 
