@@ -38,3 +38,20 @@ sequence = pad_sequence(sequence, True, 0)
 dset = TensorDataset(sequence)
 loader = DataLoader(dset, 32, True)
 
+model = Model()
+optimizer = torch.optim.Adam(model.parameters(), lr = 0.001)
+lossfn = torch.CrossEntropyLoss(ignore_index = 0)
+
+for epochs in range(200):
+    model.train()
+    for batch in loader:
+        x = batch[0][:, :-1]
+        target = batch[0][:, 1:]
+        optimizer.zero_grad()
+        out, _ = model(x)
+        out.view(-1, 28)
+        target.reshape(-1)
+        loss = lossfn(target)
+        loss.backward()
+        optimizer.step()
+
